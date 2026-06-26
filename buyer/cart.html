@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - TechVerse Market</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body class="bg-slate-50 min-h-screen flex flex-col">
+
+    <!-- Sticky Navbar Container -->
+    <div id="navbar-container"></div>
+
+    <!-- Page Header / Breadcrumb -->
+    <div class="page-hero py-8">
+        <div class="max-w-7xl mx-auto px-4">
+            <h1 class="text-2xl font-extrabold tracking-tight">Shopping Cart</h1>
+            <p class="text-sm text-white/70 mt-2 max-w-xl">Review your selected items, update quantities, and continue to a cleaner checkout flow.</p>
+            <nav class="flex text-xs text-slate-400 mt-1.5 font-medium">
+                <a href="../index.html" class="page-hero-link">Home</a>
+                <span class="mx-2 text-slate-700"><i class="fas fa-chevron-right text-[8px]"></i></span>
+                <span class="page-hero-current">Shopping Cart</span>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 py-8">
+        <!-- Interactive Cart Layout -->
+        <div id="cart-content-wrapper" class="flex flex-col lg:flex-row gap-8">
+            <!-- Left Side: Table of items -->
+            <div class="flex-grow table-shell p-6">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="border-b border-slate-100 text-slate-400 text-xs font-bold uppercase tracking-wider pb-4">
+                                <th class="py-3">Product Detail</th>
+                                <th class="py-3 text-center">Quantity</th>
+                                <th class="py-3 text-right">Price</th>
+                                <th class="py-3 text-right">Total</th>
+                                <th class="py-3 text-center">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="cart-items-tbody" class="divide-y divide-slate-100">
+                            <!-- Items dynamically injected by cart.js -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Footer buttons -->
+                <div class="flex flex-wrap justify-between items-center gap-4 mt-8 pt-6 border-t border-slate-100">
+                    <a href="products.html" class="brand-btn-outline font-bold text-xs px-5 py-3 rounded-xl transition-colors">
+                        <i class="fas fa-arrow-left mr-2"></i> Continue Shopping
+                    </a>
+                    <button id="clear-cart-btn" class="bg-red-50 hover:bg-red-100 text-red-500 font-bold text-xs px-5 py-3 rounded-xl transition-colors">
+                        <i class="far fa-trash-alt mr-2"></i> Empty Cart
+                    </button>
+                </div>
+            </div>
+
+            <!-- Right Side: Order summary -->
+            <div class="w-full lg:w-96 shrink-0 flex flex-col gap-6">
+                <div class="table-shell p-6">
+                    <h3 class="font-bold text-slate-800 text-sm uppercase tracking-wider pb-4 border-b border-slate-100 mb-5">Order Summary</h3>
+
+                    <div class="space-y-3.5 text-sm">
+                        <div class="flex justify-between items-center text-slate-500">
+                            <span>Cart Subtotal</span>
+                            <span class="font-bold text-slate-800" id="summary-subtotal">PKR 0</span>
+                        </div>
+                        <div class="flex justify-between items-center text-slate-500">
+                            <span>Shipping Cost</span>
+                            <span class="font-bold text-slate-800" id="summary-shipping">PKR 0</span>
+                        </div>
+                        <div class="flex justify-between items-center text-slate-500 pb-4 border-b border-slate-100">
+                            <span>Sales Tax (GST 5%)</span>
+                            <span class="font-bold text-slate-800" id="summary-tax">PKR 0</span>
+                        </div>
+                        <div class="flex justify-between items-center text-slate-900 font-extrabold text-base pt-2">
+                            <span>Grand Total</span>
+                            <span class="text-teal-600" id="summary-total">PKR 0</span>
+                        </div>
+                    </div>
+
+                    <a href="checkout.html" class="brand-btn-primary block text-center py-3.5 text-white font-extrabold rounded-xl transition-all text-sm mt-8">
+                        Proceed to Checkout <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+
+                <!-- Info callouts -->
+                <div class="info-callout p-5 text-xs text-slate-600 leading-relaxed">
+                    <p class="font-bold text-slate-700 mb-1"><i class="fas fa-info-circle mr-1.5 text-teal-600"></i>Delivery Info</p>
+                    Flat PKR 500 shipping charge applies to all orders under PKR 50,000. Free shipping is automatically applied to orders above PKR 50,000.
+                </div>
+            </div>
+        </div>
+
+        <!-- Empty Cart State -->
+        <div id="cart-empty-state" class="hidden text-center py-24 table-shell max-w-xl mx-auto">
+            <div class="w-20 h-20 rounded-full bg-slate-50 text-slate-400 flex items-center justify-center text-3xl mx-auto mb-5 border border-slate-100"><i class="fas fa-shopping-cart"></i></div>
+            <h3 class="font-bold text-slate-800 text-lg">Your Cart is Empty</h3>
+            <p class="text-slate-500 text-xs mt-1 leading-relaxed max-w-xs mx-auto">Before proceeding to checkout, you must add some tech hardware components to your shopping cart.</p>
+            <a href="products.html" class="inline-block brand-btn-primary text-white font-extrabold text-xs px-6 py-3 rounded-xl mt-6 transition-all">
+                Shop Products Catalog
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
+
+    <!-- Scripts -->
+    <script src="../js/utils.js"></script>
+    <script type="module" src="../js/common.js"></script>
+    <!-- Cart Page Logic -->
+    <script type="module" src="../js/cart.js"></script>
+</body>
+</html>
+
+

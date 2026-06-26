@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Reports - Vendor Portal</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body class="bg-slate-50 min-h-screen flex flex-col">
+
+    <!-- Header Container -->
+    <div id="vendor-header"></div>
+
+    <div class="flex flex-grow overflow-hidden">
+        <!-- Sidebar Container -->
+        <div id="vendor-sidebar"></div>
+
+        <!-- Main Workspace -->
+        <main class="flex-grow p-6 md:p-8 overflow-y-auto">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+                <div>
+                    <h1 class="text-2xl font-extrabold text-slate-900 tracking-tight">Financial & Sales Reports</h1>
+                    <p class="text-slate-450 text-xs mt-1">Review shop transaction records, monthly revenues, and sales trends.</p>
+                </div>
+            </div>
+
+            <!-- Revenue KPI Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div class="bg-white border border-slate-200/80 rounded-2xl p-6 flex items-center gap-4 shadow-sm">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-xl shrink-0"><i class="fas fa-wallet"></i></div>
+                    <div>
+                        <span class="block text-[10px] text-slate-450 uppercase tracking-wider font-bold mb-0.5">Total Revenue</span>
+                        <span id="rep-revenue" class="text-lg font-extrabold text-slate-800">PKR 0</span>
+                    </div>
+                </div>
+                <div class="bg-white border border-slate-200/80 rounded-2xl p-6 flex items-center gap-4 shadow-sm">
+                    <div class="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-xl shrink-0"><i class="fas fa-receipt"></i></div>
+                    <div>
+                        <span class="block text-[10px] text-slate-450 uppercase tracking-wider font-bold mb-0.5">Total Sales</span>
+                        <span id="rep-sales" class="text-lg font-extrabold text-slate-800">0 orders</span>
+                    </div>
+                </div>
+                <div class="bg-white border border-slate-200/80 rounded-2xl p-6 flex items-center gap-4 shadow-sm">
+                    <div class="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-xl shrink-0"><i class="fas fa-calculator"></i></div>
+                    <div>
+                        <span class="block text-[10px] text-slate-450 uppercase tracking-wider font-bold mb-0.5">Average Order Value</span>
+                        <span id="rep-avg" class="text-lg font-extrabold text-slate-800">PKR 0</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chart Canvas -->
+            <div class="bg-white border border-slate-200/80 rounded-2xl p-6 shadow-sm mb-8">
+                <h3 class="font-bold text-slate-800 text-sm uppercase tracking-wider mb-6 pb-3 border-b border-slate-100"><i class="fas fa-chart-area text-blue-500 mr-2"></i>Monthly Revenue Analytics</h3>
+                <div class="relative h-80">
+                    <canvas id="vendorReportsChart"></canvas>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../js/utils.js"></script>
+    <script type="module" src="../js/vendor.js"></script>
+</body>
+</html>
+
+

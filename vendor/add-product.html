@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product - Vendor Portal</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body class="bg-slate-50 min-h-screen flex flex-col">
+
+    <!-- Header Container -->
+    <div id="vendor-header"></div>
+
+    <div class="flex flex-grow overflow-hidden">
+        <!-- Sidebar Container -->
+        <div id="vendor-sidebar"></div>
+
+        <!-- Main Workspace -->
+        <main class="flex-grow p-6 md:p-8 overflow-y-auto">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+                <div>
+                    <h1 class="text-2xl font-extrabold text-slate-900 tracking-tight">Add New Product</h1>
+                    <p class="text-slate-450 text-xs mt-1">Submit a new tech component or laptop to the catalog. It will go into pending approval status.</p>
+                </div>
+            </div>
+
+            <!-- Product Form Card -->
+            <div class="bg-white border border-slate-200/80 rounded-2xl p-6 md:p-8 max-w-3xl shadow-sm">
+                <form id="add-product-form" class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Product Name -->
+                        <div class="md:col-span-2">
+                            <label for="prod-name" class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Product Name</label>
+                            <input id="prod-name" type="text" required placeholder="e.g. Intel Core i9-14900K Processor" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 text-sm focus:outline-none focus:border-blue-500 focus:bg-white transition-all">
+                        </div>
+
+                        <!-- Brand -->
+                        <div>
+                            <label for="prod-brand" class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Brand</label>
+                            <input id="prod-brand" type="text" required placeholder="e.g. Intel" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 text-sm focus:outline-none focus:border-blue-500 focus:bg-white transition-all">
+                        </div>
+
+                        <!-- Category -->
+                        <div>
+                            <label for="prod-category" class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Category</label>
+                            <select id="prod-category" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 text-sm focus:outline-none focus:border-blue-500 focus:bg-white transition-all cursor-pointer">
+                                <!-- Loaded dynamically -->
+                            </select>
+                        </div>
+
+                        <!-- Price (PKR) -->
+                        <div>
+                            <label for="prod-price" class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Retail Price (PKR)</label>
+                            <input id="prod-price" type="number" required min="1" placeholder="e.g. 165000" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 text-sm focus:outline-none focus:border-blue-500 focus:bg-white transition-all">
+                        </div>
+
+                        <!-- Stock quantity -->
+                        <div>
+                            <label for="prod-stock" class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Inventory Stock (Qty)</label>
+                            <input id="prod-stock" type="number" required min="1" placeholder="e.g. 15" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 text-sm focus:outline-none focus:border-blue-500 focus:bg-white transition-all">
+                        </div>
+
+                        <!-- Image URL -->
+                        <div class="md:col-span-2">
+                            <label for="prod-image" class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Product Image Link (URL)</label>
+                            <input id="prod-image" type="url" placeholder="https://images.unsplash.com/photo-... or leave empty for default placeholder" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 text-sm focus:outline-none focus:border-blue-500 focus:bg-white transition-all">
+                        </div>
+
+                        <!-- Description -->
+                        <div class="md:col-span-2">
+                            <label for="prod-desc" class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Product Specifications & Description</label>
+                            <textarea id="prod-desc" required placeholder="Describe core details, parameters, dimensions, and warranty conditions of the hardware..." class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 text-sm h-32 focus:outline-none focus:border-blue-500 focus:bg-white transition-all"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Footer actions -->
+                    <div class="flex gap-4 pt-4 border-t border-slate-100">
+                        <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs px-6 py-3.5 rounded-xl shadow-md shadow-blue-500/20 transition-all">
+                            Save Product
+                        </button>
+                        <button type="reset" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs px-6 py-3.5 rounded-xl transition-all">
+                            Reset Form
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../js/utils.js"></script>
+    <script type="module" src="../js/vendor.js"></script>
+</body>
+</html>
+
+

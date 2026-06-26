@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users Management - Admin Panel</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body class="bg-slate-50 min-h-screen flex flex-col">
+
+    <!-- Header Container -->
+    <div id="admin-header"></div>
+
+    <div class="flex flex-grow overflow-hidden">
+        <!-- Sidebar Container -->
+        <div id="admin-sidebar"></div>
+
+        <!-- Main Workspace -->
+        <main class="flex-grow p-6 md:p-8 overflow-y-auto">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+                <div>
+                    <h1 class="text-2xl font-extrabold text-slate-900 tracking-tight">Platform Users Registry</h1>
+                    <p class="text-slate-450 text-xs mt-1">Review accounts, adjust credentials/roles, or remove users.</p>
+                </div>
+            </div>
+
+            <!-- Users Table Card -->
+            <div class="bg-white border border-slate-200/80 rounded-2xl p-6 shadow-sm">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse text-xs">
+                        <thead>
+                            <tr class="border-b border-slate-100 text-slate-400 font-bold uppercase tracking-wider pb-3">
+                                <th class="py-2.5">User Name</th>
+                                <th class="py-2.5">Email Address</th>
+                                <th class="py-2.5">Assigned Role</th>
+                                <th class="py-2.5 text-center">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="users-tbody" class="divide-y divide-slate-100">
+                            <!-- Injected dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../js/utils.js"></script>
+    <script type="module" src="../js/admin.js"></script>
+</body>
+</html>
+
+

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - TechVerse Market</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body class="bg-slate-50 min-h-screen flex flex-col">
+
+    <!-- Admin Header Layout -->
+    <div id="admin-header"></div>
+
+    <div class="flex flex-grow overflow-hidden">
+        <!-- Admin Sidebar Layout -->
+        <div id="admin-sidebar"></div>
+
+        <!-- Main Workspace -->
+        <main class="flex-grow p-6 md:p-8 overflow-y-auto">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+                <div>
+                    <h1 class="text-2xl font-extrabold text-slate-900 tracking-tight">Platform Control Hub</h1>
+                    <p class="text-slate-455 text-xs mt-1">Platform-wide statistics, moderation registers, and configurations</p>
+                </div>
+            </div>
+
+            <!-- KPI Cards Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5 mb-8">
+                <!-- Total Users -->
+                <div class="bg-white border border-slate-200/80 rounded-2xl p-5 flex items-center gap-4 shadow-sm">
+                    <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-lg shrink-0"><i class="fas fa-users"></i></div>
+                    <div>
+                        <span class="block text-[9px] text-slate-450 uppercase tracking-wider font-bold mb-0.5">Total Users</span>
+                        <span id="stat-users" class="text-lg font-extrabold text-slate-800">0</span>
+                    </div>
+                </div>
+                <!-- Total Vendors -->
+                <div class="bg-white border border-slate-200/80 rounded-2xl p-5 flex items-center gap-4 shadow-sm">
+                    <div class="w-10 h-10 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center text-lg shrink-0"><i class="fas fa-store"></i></div>
+                    <div>
+                        <span class="block text-[9px] text-slate-450 uppercase tracking-wider font-bold mb-0.5">Vendors</span>
+                        <span id="stat-vendors" class="text-lg font-extrabold text-slate-800">0</span>
+                    </div>
+                </div>
+                <!-- Products -->
+                <div class="bg-white border border-slate-200/80 rounded-2xl p-5 flex items-center gap-4 shadow-sm">
+                    <div class="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-lg shrink-0"><i class="fas fa-boxes"></i></div>
+                    <div>
+                        <span class="block text-[9px] text-slate-450 uppercase tracking-wider font-bold mb-0.5">Products</span>
+                        <span id="stat-products" class="text-lg font-extrabold text-slate-800">0</span>
+                    </div>
+                </div>
+                <!-- Orders -->
+                <div class="bg-white border border-slate-200/80 rounded-2xl p-5 flex items-center gap-4 shadow-sm">
+                    <div class="w-10 h-10 rounded-xl bg-orange-50 text-orange-650 flex items-center justify-center text-lg shrink-0"><i class="fas fa-shopping-bag"></i></div>
+                    <div>
+                        <span class="block text-[9px] text-slate-450 uppercase tracking-wider font-bold mb-0.5">Platform Orders</span>
+                        <span id="stat-orders" class="text-lg font-extrabold text-slate-800">0</span>
+                    </div>
+                </div>
+                <!-- Revenue -->
+                <div class="bg-white border border-slate-200/80 rounded-2xl p-5 flex items-center gap-4 shadow-sm">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-lg shrink-0"><i class="fas fa-coins"></i></div>
+                    <div>
+                        <span class="block text-[9px] text-slate-450 uppercase tracking-wider font-bold mb-0.5">Total Revenue</span>
+                        <span id="stat-revenue" class="text-sm font-extrabold text-slate-800">PKR 0</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+                <!-- Sales trend -->
+                <div class="lg:col-span-2 bg-white border border-slate-200/80 rounded-2xl p-6 shadow-sm">
+                    <h3 class="font-bold text-slate-800 text-sm uppercase tracking-wider mb-6 pb-3 border-b border-slate-100"><i class="fas fa-chart-line text-blue-500 mr-2"></i>Global Revenue Growth (2026)</h3>
+                    <div class="relative h-72">
+                        <canvas id="adminSalesChart"></canvas>
+                    </div>
+                </div>
+                <!-- Stats Breakdown -->
+                <div class="bg-white border border-slate-200/80 rounded-2xl p-6 shadow-sm">
+                    <h3 class="font-bold text-slate-800 text-sm uppercase tracking-wider mb-6 pb-3 border-b border-slate-100"><i class="fas fa-chart-pie text-blue-500 mr-2"></i>Global Catalog Stats</h3>
+                    <div class="relative h-72 flex items-center justify-center">
+                        <canvas id="adminProductChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Approval Tables Summaries -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Recent Orders -->
+                <div class="bg-white border border-slate-200/80 rounded-2xl p-6 shadow-sm">
+                    <div class="flex items-center justify-between mb-6 pb-3 border-b border-slate-100">
+                        <h3 class="font-bold text-slate-800 text-sm uppercase tracking-wider"><i class="fas fa-shopping-cart text-blue-500 mr-2"></i>Recent platform orders</h3>
+                        <a href="orders.html" class="text-xs font-bold text-blue-600 hover:underline">Manage Orders</a>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse text-xs">
+                            <thead>
+                                <tr class="border-b border-slate-100 text-slate-400 font-bold uppercase tracking-wider pb-3.5">
+                                    <th class="py-2.5">Order ID</th>
+                                    <th class="py-2.5">Buyer</th>
+                                    <th class="py-2.5">Date</th>
+                                    <th class="py-2.5 font-bold">Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody id="admin-recent-orders-tbody" class="divide-y divide-slate-100">
+                                <!-- Dynamic -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Recent Vendors Applications -->
+                <div class="bg-white border border-slate-200/80 rounded-2xl p-6 shadow-sm">
+                    <div class="flex items-center justify-between mb-6 pb-3 border-b border-slate-100">
+                        <h3 class="font-bold text-slate-800 text-sm uppercase tracking-wider"><i class="fas fa-store-alt text-blue-500 mr-2"></i>Pending Vendor Requests</h3>
+                        <a href="vendor-approval.html" class="text-xs font-bold text-blue-600 hover:underline">Moderation Queue</a>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse text-xs">
+                            <thead>
+                                <tr class="border-b border-slate-100 text-slate-400 font-bold uppercase tracking-wider pb-3.5">
+                                    <th class="py-2.5">Shop Name</th>
+                                    <th class="py-2.5">Applicant</th>
+                                    <th class="py-2.5">Email</th>
+                                    <th class="py-2.5 text-center">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="admin-recent-vendors-tbody" class="divide-y divide-slate-100">
+                                <!-- Dynamic -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../js/utils.js"></script>
+    <script type="module" src="../js/admin.js"></script>
+</body>
+</html>
+
+

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Wishlist - TechVerse Market</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body class="bg-slate-50 min-h-screen flex flex-col">
+
+    <!-- Sticky Navbar Container -->
+    <div id="navbar-container"></div>
+
+    <!-- Page Header / Breadcrumb -->
+    <div class="page-hero py-8">
+        <div class="max-w-7xl mx-auto px-4">
+            <h1 class="text-2xl font-extrabold tracking-tight">My Wishlist</h1>
+            <p class="text-sm text-white/70 mt-2 max-w-xl">Keep shortlisted products in one place and move them to cart whenever you are ready.</p>
+            <nav class="flex text-xs text-slate-400 mt-1.5 font-medium">
+                <a href="../index.html" class="page-hero-link">Home</a>
+                <span class="mx-2 text-slate-700"><i class="fas fa-chevron-right text-[8px]"></i></span>
+                <span class="page-hero-current">Wishlist</span>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <main class="flex-grow max-w-4xl w-full mx-auto px-4 py-8">
+        <!-- Interactive Wishlist Table -->
+        <div id="wishlist-content-wrapper" class="table-shell p-6">
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="border-b border-slate-100 text-slate-400 text-xs font-bold uppercase tracking-wider pb-4">
+                            <th class="py-3">Product Detail</th>
+                            <th class="py-3 text-right">Unit Price</th>
+                            <th class="py-3 text-center">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="wishlist-items-tbody" class="divide-y divide-slate-100">
+                        <!-- Items dynamically injected by wishlist.js -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Empty Wishlist State -->
+        <div id="wishlist-empty-state" class="hidden text-center py-24 table-shell max-w-xl mx-auto">
+            <div class="w-20 h-20 rounded-full bg-slate-50 text-slate-400 flex items-center justify-center text-3xl mx-auto mb-5 border border-slate-100"><i class="far fa-heart"></i></div>
+            <h3 class="font-bold text-slate-800 text-lg">Your Wishlist is Empty</h3>
+            <p class="text-slate-500 text-xs mt-1 leading-relaxed max-w-xs mx-auto">Browse products catalog and tap the heart icon to save products here for later purchase.</p>
+            <a href="products.html" class="inline-block brand-btn-primary text-white font-extrabold text-xs px-6 py-3 rounded-xl mt-6 transition-all">
+                Shop Products Catalog
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
+
+    <!-- Scripts -->
+    <script src="../js/utils.js"></script>
+    <script type="module" src="../js/common.js"></script>
+    <!-- Wishlist Page Logic -->
+    <script type="module" src="../js/wishlist.js"></script>
+</body>
+</html>
+
+

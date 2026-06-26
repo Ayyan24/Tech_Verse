@@ -1,0 +1,762 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechVerse Market - Pakistan's Premium IT Store</title>
+    <meta name="description" content="TechVerse Market â€” Pakistan's #1 multi-vendor IT store. Shop laptops, gaming PCs, monitors, components and accessories with best prices and fast delivery.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        /* Trending tab */
+        .active-tab { background: #f97316; color: white; }
+        .trending-tab-btn { padding: 7px 16px; border-radius: 2px; font-size: 12px; font-weight: 600; transition: all 0.2s ease; border: 1px solid #e2e4ed; }
+        .trending-tab-btn:not(.active-tab):hover { background: rgba(249,115,22,0.1); color: #f97316; border-color: #f97316; }
+        @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.5} }
+
+        /* Hero slider covers full height of sidebar */
+        .hero-slider-wrapper { flex: 1; min-width: 0; }
+
+        /* Sidebar scrollable on mobile */
+        @media (max-width: 768px) {
+            .czone-sidebar-cats { display: none; }
+        }
+
+        /* Promo banners row */
+        .promo-banners { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; padding: 16px; }
+        @media (max-width: 900px) { .promo-banners { grid-template-columns: 1fr 1fr; } }
+        @media (max-width: 600px) { .promo-banners { grid-template-columns: 1fr; } }
+
+        .promo-banner-card {
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+            min-height: 130px;
+            display: flex;
+            align-items: flex-end;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+            background-size: cover;
+            background-position: center;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .promo-banner-card:hover img { transform: scale(1.04); }
+        .promo-banner-card img { width: 100%; height: 130px; object-fit: cover; transition: transform 0.3s ease; display: block; }
+        .promo-banner-overlay {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            background: linear-gradient(to top, rgba(7,36,58,0.82), transparent);
+            padding: 10px 12px;
+        }
+        .promo-banner-overlay h4 { font-size: 13px; font-weight: 700; color: white; margin: 0; }
+        .promo-banner-overlay span { font-size: 11px; color: rgba(255,255,255,0.8); }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <div id="navbar-container"></div>
+
+    <main class="flex-grow">
+
+        <!-- ============ HERO + SIDEBAR LAYOUT ============ -->
+        <div style="background: #fff; border-bottom: 1px solid #e0e0e0;">
+            <div class="czone-home-layout" style="padding-top: 0; padding-bottom: 0; max-width: 1280px; margin: 0 auto; padding-left: 16px; padding-right: 16px; display: flex; gap: 0; align-items: stretch;">
+
+                <!-- LEFT: Category Sidebar (desktop only) -->
+                <div class="czone-sidebar-cats" style="align-self: stretch;">
+                    <div class="czone-sidebar-header">
+                        <i class="fas fa-bars"></i> All Categories
+                    </div>
+                    <ul id="sidebar-cat-list">
+                        <!-- JS injects category links here -->
+                    </ul>
+                </div>
+
+                <!-- RIGHT: Hero Slider + Promo Banners -->
+                <div class="hero-slider-wrapper">
+                    <!-- Main hero slider -->
+                    <div class="swiper hero-swiper" style="border-radius: 0; height: 360px;">
+                        <div class="swiper-wrapper">
+
+                            <!-- Slide 1: Laptops -->
+                            <div class="swiper-slide" style="background: #0f0d2e;">
+                                <div style="display: flex; align-items: center; height: 100%; position: relative; overflow: hidden;">
+                                    <img src="https://static.webx.pk/files/87161/Images/L04-slider-02-87409-161025040249_w_1090_h_600-87161-101125115714_w_1090_h_600.avif"
+                                         alt="Latest Laptops" style="position: absolute; right: 0; top: 0; height: 100%; width: 60%; object-fit: cover; object-position: center left;">
+                                    <div style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; background: linear-gradient(90deg, #0f0d2e 38%, transparent 75%);"></div>
+                                    <div style="position: relative; padding: 0 36px; z-index: 2; color: white; max-width: 420px;">
+                                        <span style="background: #f97316; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 2px; text-transform: uppercase; letter-spacing: 0.05em;">New Arrivals</span>
+                                        <h2 style="font-size: 26px; font-weight: 800; margin: 10px 0 8px; line-height: 1.2;">Latest Laptops<br>for Work & Gaming</h2>
+                                        <p style="font-size: 13px; opacity: 0.8; margin-bottom: 16px;">Intel Core Ultra â€¢ RTX 50 Series â€¢ From Rs. 89,990</p>
+                                        <a href="buyer/products.html?category=laptops" style="display: inline-block; background: linear-gradient(135deg,#f97316,#ea6c0a); color: white; padding: 10px 22px; font-weight: 700; font-size: 13px; border-radius: 2px; text-decoration: none; text-transform: uppercase; letter-spacing: 0.04em; box-shadow: 0 4px 14px rgba(249,115,22,0.5);">Shop Laptops â†’</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Slide 2: Gaming Monitors -->
+                            <div class="swiper-slide" style="background: #100f2e;">
+                                <div style="display: flex; align-items: center; height: 100%; position: relative; overflow: hidden;">
+                                    <img src="https://static.webx.pk/files/87161/Images/Monitors-87161-241225072500_w_1090_h_600.avif"
+                                         alt="Gaming Monitors" style="position: absolute; right: 0; top: 0; height: 100%; width: 65%; object-fit: cover; object-position: left;">
+                                    <div style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; background: linear-gradient(90deg, #100f2e 38%, transparent 72%);"></div>
+                                    <div style="position: relative; padding: 0 36px; z-index: 2; color: white; max-width: 420px;">
+                                        <span style="background: #f97316; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 2px; text-transform: uppercase; letter-spacing: 0.05em;">Hot Deal</span>
+                                        <h2 style="font-size: 26px; font-weight: 800; margin: 10px 0 8px; line-height: 1.2;">Massive Monitor<br>Collection</h2>
+                                        <p style="font-size: 13px; opacity: 0.8; margin-bottom: 16px;">180Hz â€¢ QHD â€¢ Curved â€¢ FreeSync â€” Unbeatable Prices!</p>
+                                        <a href="buyer/products.html?category=monitors" style="display: inline-block; background: linear-gradient(135deg,#f97316,#ea6c0a); color: white; padding: 10px 22px; font-weight: 700; font-size: 13px; border-radius: 2px; text-decoration: none; text-transform: uppercase; letter-spacing: 0.04em; box-shadow: 0 4px 14px rgba(249,115,22,0.5);">Shop Monitors â†’</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Slide 3: Consoles / Gaming -->
+                            <div class="swiper-slide" style="background: #130f2e;">
+                                <div style="display: flex; align-items: center; height: 100%; position: relative; overflow: hidden;">
+                                    <img src="https://static.webx.pk/files/87161/Images/consoles-87161-101125031020_w_300_h_300.avif"
+                                         alt="Gaming Consoles" style="position: absolute; right: 60px; top: 50%; transform: translateY(-50%); height: 75%; object-fit: contain; object-position: center;">
+                                    <div style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; background: linear-gradient(90deg, #130f2e 40%, transparent 80%);"></div>
+                                    <div style="position: relative; padding: 0 36px; z-index: 2; color: white; max-width: 420px;">
+                                        <span style="background: #f97316; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 2px; text-transform: uppercase; letter-spacing: 0.05em;">Gaming Zone</span>
+                                        <h2 style="font-size: 26px; font-weight: 800; margin: 10px 0 8px; line-height: 1.2;">PlayStation â€¢ Xbox<br>Nintendo Switch</h2>
+                                        <p style="font-size: 13px; opacity: 0.8; margin-bottom: 16px;">Every Console. Every Story. One Destination.</p>
+                                        <a href="buyer/products.html?category=gaming" style="display: inline-block; background: linear-gradient(135deg,#f97316,#ea6c0a); color: white; padding: 10px 22px; font-weight: 700; font-size: 13px; border-radius: 2px; text-decoration: none; text-transform: uppercase; letter-spacing: 0.04em; box-shadow: 0 4px 14px rgba(249,115,22,0.5);">Shop Gaming â†’</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Slide 4: Sony Headphones -->
+                            <div class="swiper-slide" style="background: #0f0d2e;">
+                                <div style="display: flex; align-items: center; height: 100%; position: relative; overflow: hidden;">
+                                    <img src="https://static.webx.pk/files/87161/Images/sony-87161-241225064842_w_1600_h_853.avif"
+                                         alt="Sony Headphones" style="position: absolute; right: 0; top: 0; height: 100%; width: 65%; object-fit: cover; object-position: left;">
+                                    <div style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; background: linear-gradient(90deg, #0f0d2e 38%, transparent 72%);"></div>
+                                    <div style="position: relative; padding: 0 36px; z-index: 2; color: white; max-width: 420px;">
+                                        <span style="background: #f97316; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 2px; text-transform: uppercase; letter-spacing: 0.05em;">Premium Audio</span>
+                                        <h2 style="font-size: 26px; font-weight: 800; margin: 10px 0 8px; line-height: 1.2;">Immerse Yourself<br>in Pure Sound</h2>
+                                        <p style="font-size: 13px; opacity: 0.8; margin-bottom: 16px;">Sony WH-1000XM6 â€” 30H Battery â€¢ 12 Mics â€¢ Noise Cancel</p>
+                                        <a href="buyer/products.html?category=accessories" style="display: inline-block; background: linear-gradient(135deg,#f97316,#ea6c0a); color: white; padding: 10px 22px; font-weight: 700; font-size: 13px; border-radius: 2px; text-decoration: none; text-transform: uppercase; letter-spacing: 0.04em; box-shadow: 0 4px 14px rgba(249,115,22,0.5);">Shop Audio â†’</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="swiper-pagination" style="bottom: 12px;"></div>
+                        <div class="swiper-button-next" style="right: 10px;"></div>
+                        <div class="swiper-button-prev" style="left: 10px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============ PROMO BANNER ROW ============ -->
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                <a href="buyer/products.html?category=components" class="promo-banner-card">
+                    <img src="https://static.webx.pk/files/87161/Images/processors-87161-101125030606_w_250_h_250.avif" alt="Components">
+                    <div class="promo-banner-overlay"><h4>PC Components</h4><span>CPUs, GPUs, Motherboards</span></div>
+                </a>
+                <a href="buyer/products.html?category=storage" class="promo-banner-card">
+                    <img src="https://static.webx.pk/files/87161/Images/cooling-solutions-87161-101125020656_w_300_h_300.avif" alt="Storage">
+                    <div class="promo-banner-overlay"><h4>Storage & Cooling</h4><span>SSD, HDD, Coolers</span></div>
+                </a>
+                <a href="buyer/products.html?category=accessories" class="promo-banner-card">
+                    <img src="https://static.webx.pk/files/87161/Images/keyboards-87161-101125031453_w_300_h_300.avif" alt="Accessories">
+                    <div class="promo-banner-overlay"><h4>Accessories</h4><span>Keyboards, Mice, Webcams</span></div>
+                </a>
+            </div>
+        </div>
+
+        <!-- ============ CATEGORIES STRIP ============ -->
+        <section style="max-width: 1280px; margin: 0 auto; padding: 0 16px 16px;" data-aos="fade-up">
+            <div style="background: white; border: 1px solid #e0e0e0; border-radius: 4px; padding: 16px;">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+                    <h2 class="section-title" style="margin: 0;">Browse Categories</h2>
+                    <a href="buyer/products.html" class="brand-link" style="font-size: 12px; font-weight: 600;">View All <i class="fas fa-arrow-right" style="font-size: 10px;"></i></a>
+                </div>
+                <div id="categories-slider-container" class="flex gap-3 overflow-x-auto pb-1 no-scrollbar"></div>
+            </div>
+        </section>
+
+        <!-- ============ FLASH SALE ============ -->
+        <section class="deal-section" style="padding: 32px 0;" data-aos="fade-up">
+            <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-[220px_1fr] gap-6 items-start">
+
+                <!-- Timer Panel -->
+                <div style="color: white;">
+                    <span style="background: linear-gradient(135deg,#f97316,#ea6c0a); font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 2px; text-transform: uppercase; display: inline-block; margin-bottom: 12px;">âš¡ Flash Sale</span>
+                    <h2 style="font-size: 22px; font-weight: 800; margin: 0 0 8px;">Limited Time<br>Offers</h2>
+                    <p style="font-size: 12px; opacity: 0.7; margin-bottom: 18px;">Hand-picked deals ending soon. Limited stock!</p>
+                    <div style="display: flex; gap: 8px;">
+                        <div style="background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); padding: 10px; min-width: 52px; text-align: center; border-radius: 3px;">
+                            <span id="timer-hours" style="font-size: 22px; font-weight: 800; display: block;">09</span>
+                            <span style="font-size: 10px; opacity: 0.6;">HRS</span>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); padding: 10px; min-width: 52px; text-align: center; border-radius: 3px;">
+                            <span id="timer-mins" style="font-size: 22px; font-weight: 800; display: block;">59</span>
+                            <span style="font-size: 10px; opacity: 0.6;">MIN</span>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); padding: 10px; min-width: 52px; text-align: center; border-radius: 3px;">
+                            <span id="timer-secs" style="font-size: 22px; font-weight: 800; display: block;">00</span>
+                            <span style="font-size: 10px; opacity: 0.6;">SEC</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Flash Products -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-3" id="flash-sale-products">
+<!-- Dummy Product Card (UI Placeholder) -->
+<div class="czone-product-box">
+    <div class="czone-badges"><span class="czone-badge czone-badge-new">New</span></div>
+    <a href="buyer/product-details.html?id=dummy" class="czone-product-img">
+        <img src="https://static.webx.pk/files/87161/Images/87161-100624021200424_w_300_h_300.avif" alt="Sample Laptop" loading="lazy">
+    </a>
+    <div class="czone-product-body">
+        <div class="czone-product-top">
+            <span class="czone-product-brand">TechVerse</span>
+            <span class="czone-stock-pill in-stock"><i class="fas fa-circle" style="font-size:7px"></i>10 in stock</span>
+        </div>
+        <a href="buyer/product-details.html?id=dummy" class="czone-product-title">Sample Gaming Laptop 15.6"</a>
+        <div class="czone-rating-row">
+            <div class="czone-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+            <span class="czone-rating-copy">4.0 (12 reviews)</span>
+        </div>
+        <div class="czone-prices"><span class="czone-price">Rs. 150,000</span></div>
+        <div class="czone-card-actions">
+            <button class="czone-icon-btn" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
+            <button class="czone-btn">Add To Cart</button>
+        </div>
+    </div>
+</div><!-- Dummy Product Card (UI Placeholder) -->
+<div class="czone-product-box">
+    <div class="czone-badges"><span class="czone-badge czone-badge-new">New</span></div>
+    <a href="buyer/product-details.html?id=dummy" class="czone-product-img">
+        <img src="https://static.webx.pk/files/87161/Images/87161-100624021200424_w_300_h_300.avif" alt="Sample Laptop" loading="lazy">
+    </a>
+    <div class="czone-product-body">
+        <div class="czone-product-top">
+            <span class="czone-product-brand">TechVerse</span>
+            <span class="czone-stock-pill in-stock"><i class="fas fa-circle" style="font-size:7px"></i>10 in stock</span>
+        </div>
+        <a href="buyer/product-details.html?id=dummy" class="czone-product-title">Sample Gaming Laptop 15.6"</a>
+        <div class="czone-rating-row">
+            <div class="czone-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+            <span class="czone-rating-copy">4.0 (12 reviews)</span>
+        </div>
+        <div class="czone-prices"><span class="czone-price">Rs. 150,000</span></div>
+        <div class="czone-card-actions">
+            <button class="czone-icon-btn" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
+            <button class="czone-btn">Add To Cart</button>
+        </div>
+    </div>
+</div><!-- Dummy Product Card (UI Placeholder) -->
+<div class="czone-product-box">
+    <div class="czone-badges"><span class="czone-badge czone-badge-new">New</span></div>
+    <a href="buyer/product-details.html?id=dummy" class="czone-product-img">
+        <img src="https://static.webx.pk/files/87161/Images/87161-100624021200424_w_300_h_300.avif" alt="Sample Laptop" loading="lazy">
+    </a>
+    <div class="czone-product-body">
+        <div class="czone-product-top">
+            <span class="czone-product-brand">TechVerse</span>
+            <span class="czone-stock-pill in-stock"><i class="fas fa-circle" style="font-size:7px"></i>10 in stock</span>
+        </div>
+        <a href="buyer/product-details.html?id=dummy" class="czone-product-title">Sample Gaming Laptop 15.6"</a>
+        <div class="czone-rating-row">
+            <div class="czone-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+            <span class="czone-rating-copy">4.0 (12 reviews)</span>
+        </div>
+        <div class="czone-prices"><span class="czone-price">Rs. 150,000</span></div>
+        <div class="czone-card-actions">
+            <button class="czone-icon-btn" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
+            <button class="czone-btn">Add To Cart</button>
+        </div>
+    </div>
+</div><!-- Dummy Product Card (UI Placeholder) -->
+<div class="czone-product-box">
+    <div class="czone-badges"><span class="czone-badge czone-badge-new">New</span></div>
+    <a href="buyer/product-details.html?id=dummy" class="czone-product-img">
+        <img src="https://static.webx.pk/files/87161/Images/87161-100624021200424_w_300_h_300.avif" alt="Sample Laptop" loading="lazy">
+    </a>
+    <div class="czone-product-body">
+        <div class="czone-product-top">
+            <span class="czone-product-brand">TechVerse</span>
+            <span class="czone-stock-pill in-stock"><i class="fas fa-circle" style="font-size:7px"></i>10 in stock</span>
+        </div>
+        <a href="buyer/product-details.html?id=dummy" class="czone-product-title">Sample Gaming Laptop 15.6"</a>
+        <div class="czone-rating-row">
+            <div class="czone-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+            <span class="czone-rating-copy">4.0 (12 reviews)</span>
+        </div>
+        <div class="czone-prices"><span class="czone-price">Rs. 150,000</span></div>
+        <div class="czone-card-actions">
+            <button class="czone-icon-btn" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
+            <button class="czone-btn">Add To Cart</button>
+        </div>
+    </div>
+</div>
+</div>
+            </div>
+        </section>
+
+        <!-- ============ FEATURED PRODUCTS ============ -->
+        <section style="max-width: 1280px; margin: 0 auto; padding: 24px 16px;" data-aos="fade-up">
+            <div style="background: white; border: 1px solid #e0e0e0; border-radius: 4px; padding: 16px 16px 20px;">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; border-bottom: 2px solid #f0f0f0; padding-bottom: 12px;">
+                    <h2 class="section-title" style="margin: 0;">Featured Products</h2>
+                    <a href="buyer/products.html" class="brand-link" style="font-size: 12px; font-weight: 600;">View All <i class="fas fa-arrow-right" style="font-size: 10px;"></i></a>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3" id="featured-products-grid">
+<!-- Dummy Product Card (UI Placeholder) -->
+<div class="czone-product-box">
+    <div class="czone-badges"><span class="czone-badge czone-badge-new">New</span></div>
+    <a href="buyer/product-details.html?id=dummy" class="czone-product-img">
+        <img src="https://static.webx.pk/files/87161/Images/87161-100624021200424_w_300_h_300.avif" alt="Sample Laptop" loading="lazy">
+    </a>
+    <div class="czone-product-body">
+        <div class="czone-product-top">
+            <span class="czone-product-brand">TechVerse</span>
+            <span class="czone-stock-pill in-stock"><i class="fas fa-circle" style="font-size:7px"></i>10 in stock</span>
+        </div>
+        <a href="buyer/product-details.html?id=dummy" class="czone-product-title">Sample Gaming Laptop 15.6"</a>
+        <div class="czone-rating-row">
+            <div class="czone-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+            <span class="czone-rating-copy">4.0 (12 reviews)</span>
+        </div>
+        <div class="czone-prices"><span class="czone-price">Rs. 150,000</span></div>
+        <div class="czone-card-actions">
+            <button class="czone-icon-btn" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
+            <button class="czone-btn">Add To Cart</button>
+        </div>
+    </div>
+</div><!-- Dummy Product Card (UI Placeholder) -->
+<div class="czone-product-box">
+    <div class="czone-badges"><span class="czone-badge czone-badge-new">New</span></div>
+    <a href="buyer/product-details.html?id=dummy" class="czone-product-img">
+        <img src="https://static.webx.pk/files/87161/Images/87161-100624021200424_w_300_h_300.avif" alt="Sample Laptop" loading="lazy">
+    </a>
+    <div class="czone-product-body">
+        <div class="czone-product-top">
+            <span class="czone-product-brand">TechVerse</span>
+            <span class="czone-stock-pill in-stock"><i class="fas fa-circle" style="font-size:7px"></i>10 in stock</span>
+        </div>
+        <a href="buyer/product-details.html?id=dummy" class="czone-product-title">Sample Gaming Laptop 15.6"</a>
+        <div class="czone-rating-row">
+            <div class="czone-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+            <span class="czone-rating-copy">4.0 (12 reviews)</span>
+        </div>
+        <div class="czone-prices"><span class="czone-price">Rs. 150,000</span></div>
+        <div class="czone-card-actions">
+            <button class="czone-icon-btn" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
+            <button class="czone-btn">Add To Cart</button>
+        </div>
+    </div>
+</div><!-- Dummy Product Card (UI Placeholder) -->
+<div class="czone-product-box">
+    <div class="czone-badges"><span class="czone-badge czone-badge-new">New</span></div>
+    <a href="buyer/product-details.html?id=dummy" class="czone-product-img">
+        <img src="https://static.webx.pk/files/87161/Images/87161-100624021200424_w_300_h_300.avif" alt="Sample Laptop" loading="lazy">
+    </a>
+    <div class="czone-product-body">
+        <div class="czone-product-top">
+            <span class="czone-product-brand">TechVerse</span>
+            <span class="czone-stock-pill in-stock"><i class="fas fa-circle" style="font-size:7px"></i>10 in stock</span>
+        </div>
+        <a href="buyer/product-details.html?id=dummy" class="czone-product-title">Sample Gaming Laptop 15.6"</a>
+        <div class="czone-rating-row">
+            <div class="czone-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+            <span class="czone-rating-copy">4.0 (12 reviews)</span>
+        </div>
+        <div class="czone-prices"><span class="czone-price">Rs. 150,000</span></div>
+        <div class="czone-card-actions">
+            <button class="czone-icon-btn" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
+            <button class="czone-btn">Add To Cart</button>
+        </div>
+    </div>
+</div><!-- Dummy Product Card (UI Placeholder) -->
+<div class="czone-product-box">
+    <div class="czone-badges"><span class="czone-badge czone-badge-new">New</span></div>
+    <a href="buyer/product-details.html?id=dummy" class="czone-product-img">
+        <img src="https://static.webx.pk/files/87161/Images/87161-100624021200424_w_300_h_300.avif" alt="Sample Laptop" loading="lazy">
+    </a>
+    <div class="czone-product-body">
+        <div class="czone-product-top">
+            <span class="czone-product-brand">TechVerse</span>
+            <span class="czone-stock-pill in-stock"><i class="fas fa-circle" style="font-size:7px"></i>10 in stock</span>
+        </div>
+        <a href="buyer/product-details.html?id=dummy" class="czone-product-title">Sample Gaming Laptop 15.6"</a>
+        <div class="czone-rating-row">
+            <div class="czone-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+            <span class="czone-rating-copy">4.0 (12 reviews)</span>
+        </div>
+        <div class="czone-prices"><span class="czone-price">Rs. 150,000</span></div>
+        <div class="czone-card-actions">
+            <button class="czone-icon-btn" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
+            <button class="czone-btn">Add To Cart</button>
+        </div>
+    </div>
+</div>
+</div>
+            </div>
+        </section>
+
+        <!-- ============ NEW ARRIVALS + BEST SELLERS ============ -->
+        <section class="max-w-7xl mx-auto px-4 pb-6 grid grid-cols-1 md:grid-cols-2 gap-4" data-aos="fade-up">
+            <div style="background: white; border: 1px solid #e0e0e0; border-radius: 4px; padding: 16px 16px 20px;">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; border-bottom: 2px solid #f0f0f0; padding-bottom: 12px;">
+                    <h2 class="section-title" style="margin: 0;">New Arrivals</h2>
+                    <a href="buyer/products.html?sort=newest" class="brand-link" style="font-size: 12px; font-weight: 600;">View More</a>
+                </div>
+                <div class="grid grid-cols-2 gap-3" id="new-arrivals-grid">
+<!-- Dummy Product Card (UI Placeholder) -->
+<div class="czone-product-box">
+    <div class="czone-badges"><span class="czone-badge czone-badge-new">New</span></div>
+    <a href="buyer/product-details.html?id=dummy" class="czone-product-img">
+        <img src="https://static.webx.pk/files/87161/Images/87161-100624021200424_w_300_h_300.avif" alt="Sample Laptop" loading="lazy">
+    </a>
+    <div class="czone-product-body">
+        <div class="czone-product-top">
+            <span class="czone-product-brand">TechVerse</span>
+            <span class="czone-stock-pill in-stock"><i class="fas fa-circle" style="font-size:7px"></i>10 in stock</span>
+        </div>
+        <a href="buyer/product-details.html?id=dummy" class="czone-product-title">Sample Gaming Laptop 15.6"</a>
+        <div class="czone-rating-row">
+            <div class="czone-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+            <span class="czone-rating-copy">4.0 (12 reviews)</span>
+        </div>
+        <div class="czone-prices"><span class="czone-price">Rs. 150,000</span></div>
+        <div class="czone-card-actions">
+            <button class="czone-icon-btn" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
+            <button class="czone-btn">Add To Cart</button>
+        </div>
+    </div>
+</div><!-- Dummy Product Card (UI Placeholder) -->
+<div class="czone-product-box">
+    <div class="czone-badges"><span class="czone-badge czone-badge-new">New</span></div>
+    <a href="buyer/product-details.html?id=dummy" class="czone-product-img">
+        <img src="https://static.webx.pk/files/87161/Images/87161-100624021200424_w_300_h_300.avif" alt="Sample Laptop" loading="lazy">
+    </a>
+    <div class="czone-product-body">
+        <div class="czone-product-top">
+            <span class="czone-product-brand">TechVerse</span>
+            <span class="czone-stock-pill in-stock"><i class="fas fa-circle" style="font-size:7px"></i>10 in stock</span>
+        </div>
+        <a href="buyer/product-details.html?id=dummy" class="czone-product-title">Sample Gaming Laptop 15.6"</a>
+        <div class="czone-rating-row">
+            <div class="czone-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+            <span class="czone-rating-copy">4.0 (12 reviews)</span>
+        </div>
+        <div class="czone-prices"><span class="czone-price">Rs. 150,000</span></div>
+        <div class="czone-card-actions">
+            <button class="czone-icon-btn" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
+            <button class="czone-btn">Add To Cart</button>
+        </div>
+    </div>
+</div><!-- Dummy Product Card (UI Placeholder) -->
+<div class="czone-product-box">
+    <div class="czone-badges"><span class="czone-badge czone-badge-new">New</span></div>
+    <a href="buyer/product-details.html?id=dummy" class="czone-product-img">
+        <img src="https://static.webx.pk/files/87161/Images/87161-100624021200424_w_300_h_300.avif" alt="Sample Laptop" loading="lazy">
+    </a>
+    <div class="czone-product-body">
+        <div class="czone-product-top">
+            <span class="czone-product-brand">TechVerse</span>
+            <span class="czone-stock-pill in-stock"><i class="fas fa-circle" style="font-size:7px"></i>10 in stock</span>
+        </div>
+        <a href="buyer/product-details.html?id=dummy" class="czone-product-title">Sample Gaming Laptop 15.6"</a>
+        <div class="czone-rating-row">
+            <div class="czone-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+            <span class="czone-rating-copy">4.0 (12 reviews)</span>
+        </div>
+        <div class="czone-prices"><span class="czone-price">Rs. 150,000</span></div>
+        <div class="czone-card-actions">
+            <button class="czone-icon-btn" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
+            <button class="czone-btn">Add To Cart</button>
+        </div>
+    </div>
+</div><!-- Dummy Product Card (UI Placeholder) -->
+<div class="czone-product-box">
+    <div class="czone-badges"><span class="czone-badge czone-badge-new">New</span></div>
+    <a href="buyer/product-details.html?id=dummy" class="czone-product-img">
+        <img src="https://static.webx.pk/files/87161/Images/87161-100624021200424_w_300_h_300.avif" alt="Sample Laptop" loading="lazy">
+    </a>
+    <div class="czone-product-body">
+        <div class="czone-product-top">
+            <span class="czone-product-brand">TechVerse</span>
+            <span class="czone-stock-pill in-stock"><i class="fas fa-circle" style="font-size:7px"></i>10 in stock</span>
+        </div>
+        <a href="buyer/product-details.html?id=dummy" class="czone-product-title">Sample Gaming Laptop 15.6"</a>
+        <div class="czone-rating-row">
+            <div class="czone-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+            <span class="czone-rating-copy">4.0 (12 reviews)</span>
+        </div>
+        <div class="czone-prices"><span class="czone-price">Rs. 150,000</span></div>
+        <div class="czone-card-actions">
+            <button class="czone-icon-btn" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
+            <button class="czone-btn">Add To Cart</button>
+        </div>
+    </div>
+</div>
+</div>
+            </div>
+            <div style="background: white; border: 1px solid #e0e0e0; border-radius: 4px; padding: 16px 16px 20px;">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; border-bottom: 2px solid #f0f0f0; padding-bottom: 12px;">
+                    <h2 class="section-title" style="margin: 0;">Best Sellers</h2>
+                    <a href="buyer/products.html?sort=best" class="brand-link" style="font-size: 12px; font-weight: 600;">View More</a>
+                </div>
+                <div class="grid grid-cols-2 gap-3" id="best-sellers-grid">
+<!-- Dummy Product Card (UI Placeholder) -->
+<div class="czone-product-box">
+    <div class="czone-badges"><span class="czone-badge czone-badge-new">New</span></div>
+    <a href="buyer/product-details.html?id=dummy" class="czone-product-img">
+        <img src="https://static.webx.pk/files/87161/Images/87161-100624021200424_w_300_h_300.avif" alt="Sample Laptop" loading="lazy">
+    </a>
+    <div class="czone-product-body">
+        <div class="czone-product-top">
+            <span class="czone-product-brand">TechVerse</span>
+            <span class="czone-stock-pill in-stock"><i class="fas fa-circle" style="font-size:7px"></i>10 in stock</span>
+        </div>
+        <a href="buyer/product-details.html?id=dummy" class="czone-product-title">Sample Gaming Laptop 15.6"</a>
+        <div class="czone-rating-row">
+            <div class="czone-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+            <span class="czone-rating-copy">4.0 (12 reviews)</span>
+        </div>
+        <div class="czone-prices"><span class="czone-price">Rs. 150,000</span></div>
+        <div class="czone-card-actions">
+            <button class="czone-icon-btn" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
+            <button class="czone-btn">Add To Cart</button>
+        </div>
+    </div>
+</div><!-- Dummy Product Card (UI Placeholder) -->
+<div class="czone-product-box">
+    <div class="czone-badges"><span class="czone-badge czone-badge-new">New</span></div>
+    <a href="buyer/product-details.html?id=dummy" class="czone-product-img">
+        <img src="https://static.webx.pk/files/87161/Images/87161-100624021200424_w_300_h_300.avif" alt="Sample Laptop" loading="lazy">
+    </a>
+    <div class="czone-product-body">
+        <div class="czone-product-top">
+            <span class="czone-product-brand">TechVerse</span>
+            <span class="czone-stock-pill in-stock"><i class="fas fa-circle" style="font-size:7px"></i>10 in stock</span>
+        </div>
+        <a href="buyer/product-details.html?id=dummy" class="czone-product-title">Sample Gaming Laptop 15.6"</a>
+        <div class="czone-rating-row">
+            <div class="czone-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+            <span class="czone-rating-copy">4.0 (12 reviews)</span>
+        </div>
+        <div class="czone-prices"><span class="czone-price">Rs. 150,000</span></div>
+        <div class="czone-card-actions">
+            <button class="czone-icon-btn" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
+            <button class="czone-btn">Add To Cart</button>
+        </div>
+    </div>
+</div><!-- Dummy Product Card (UI Placeholder) -->
+<div class="czone-product-box">
+    <div class="czone-badges"><span class="czone-badge czone-badge-new">New</span></div>
+    <a href="buyer/product-details.html?id=dummy" class="czone-product-img">
+        <img src="https://static.webx.pk/files/87161/Images/87161-100624021200424_w_300_h_300.avif" alt="Sample Laptop" loading="lazy">
+    </a>
+    <div class="czone-product-body">
+        <div class="czone-product-top">
+            <span class="czone-product-brand">TechVerse</span>
+            <span class="czone-stock-pill in-stock"><i class="fas fa-circle" style="font-size:7px"></i>10 in stock</span>
+        </div>
+        <a href="buyer/product-details.html?id=dummy" class="czone-product-title">Sample Gaming Laptop 15.6"</a>
+        <div class="czone-rating-row">
+            <div class="czone-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+            <span class="czone-rating-copy">4.0 (12 reviews)</span>
+        </div>
+        <div class="czone-prices"><span class="czone-price">Rs. 150,000</span></div>
+        <div class="czone-card-actions">
+            <button class="czone-icon-btn" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
+            <button class="czone-btn">Add To Cart</button>
+        </div>
+    </div>
+</div><!-- Dummy Product Card (UI Placeholder) -->
+<div class="czone-product-box">
+    <div class="czone-badges"><span class="czone-badge czone-badge-new">New</span></div>
+    <a href="buyer/product-details.html?id=dummy" class="czone-product-img">
+        <img src="https://static.webx.pk/files/87161/Images/87161-100624021200424_w_300_h_300.avif" alt="Sample Laptop" loading="lazy">
+    </a>
+    <div class="czone-product-body">
+        <div class="czone-product-top">
+            <span class="czone-product-brand">TechVerse</span>
+            <span class="czone-stock-pill in-stock"><i class="fas fa-circle" style="font-size:7px"></i>10 in stock</span>
+        </div>
+        <a href="buyer/product-details.html?id=dummy" class="czone-product-title">Sample Gaming Laptop 15.6"</a>
+        <div class="czone-rating-row">
+            <div class="czone-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+            <span class="czone-rating-copy">4.0 (12 reviews)</span>
+        </div>
+        <div class="czone-prices"><span class="czone-price">Rs. 150,000</span></div>
+        <div class="czone-card-actions">
+            <button class="czone-icon-btn" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
+            <button class="czone-btn">Add To Cart</button>
+        </div>
+    </div>
+</div>
+</div>
+            </div>
+        </section>
+
+        <!-- ============ TRENDING PRODUCTS ============ -->
+        <section style="max-width: 1280px; margin: 0 auto; padding: 0 16px 24px;" data-aos="fade-up">
+            <div style="background: white; border: 1px solid #e0e0e0; border-radius: 4px; padding: 16px 16px 20px;">
+                <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 16px; border-bottom: 2px solid #f0f0f0; padding-bottom: 12px;">
+                    <h2 class="section-title" style="margin: 0;">Trending Products</h2>
+                    <div style="display: flex; flex-wrap: wrap; gap: 6px;" id="trending-tabs">
+                        <button data-tab="all" class="trending-tab-btn active-tab">All</button>
+                        <button data-tab="laptops" class="trending-tab-btn" style="color: #333; background: #f5f5f5;">Laptops</button>
+                        <button data-tab="monitors" class="trending-tab-btn" style="color: #333; background: #f5f5f5;">Monitors</button>
+                        <button data-tab="components" class="trending-tab-btn" style="color: #333; background: #f5f5f5;">Components</button>
+                        <button data-tab="accessories" class="trending-tab-btn" style="color: #333; background: #f5f5f5;">Accessories</button>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3" id="trending-products-grid">
+<!-- Dummy Product Card (UI Placeholder) -->
+<div class="czone-product-box">
+    <div class="czone-badges"><span class="czone-badge czone-badge-new">New</span></div>
+    <a href="buyer/product-details.html?id=dummy" class="czone-product-img">
+        <img src="https://static.webx.pk/files/87161/Images/87161-100624021200424_w_300_h_300.avif" alt="Sample Laptop" loading="lazy">
+    </a>
+    <div class="czone-product-body">
+        <div class="czone-product-top">
+            <span class="czone-product-brand">TechVerse</span>
+            <span class="czone-stock-pill in-stock"><i class="fas fa-circle" style="font-size:7px"></i>10 in stock</span>
+        </div>
+        <a href="buyer/product-details.html?id=dummy" class="czone-product-title">Sample Gaming Laptop 15.6"</a>
+        <div class="czone-rating-row">
+            <div class="czone-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+            <span class="czone-rating-copy">4.0 (12 reviews)</span>
+        </div>
+        <div class="czone-prices"><span class="czone-price">Rs. 150,000</span></div>
+        <div class="czone-card-actions">
+            <button class="czone-icon-btn" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
+            <button class="czone-btn">Add To Cart</button>
+        </div>
+    </div>
+</div><!-- Dummy Product Card (UI Placeholder) -->
+<div class="czone-product-box">
+    <div class="czone-badges"><span class="czone-badge czone-badge-new">New</span></div>
+    <a href="buyer/product-details.html?id=dummy" class="czone-product-img">
+        <img src="https://static.webx.pk/files/87161/Images/87161-100624021200424_w_300_h_300.avif" alt="Sample Laptop" loading="lazy">
+    </a>
+    <div class="czone-product-body">
+        <div class="czone-product-top">
+            <span class="czone-product-brand">TechVerse</span>
+            <span class="czone-stock-pill in-stock"><i class="fas fa-circle" style="font-size:7px"></i>10 in stock</span>
+        </div>
+        <a href="buyer/product-details.html?id=dummy" class="czone-product-title">Sample Gaming Laptop 15.6"</a>
+        <div class="czone-rating-row">
+            <div class="czone-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+            <span class="czone-rating-copy">4.0 (12 reviews)</span>
+        </div>
+        <div class="czone-prices"><span class="czone-price">Rs. 150,000</span></div>
+        <div class="czone-card-actions">
+            <button class="czone-icon-btn" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
+            <button class="czone-btn">Add To Cart</button>
+        </div>
+    </div>
+</div><!-- Dummy Product Card (UI Placeholder) -->
+<div class="czone-product-box">
+    <div class="czone-badges"><span class="czone-badge czone-badge-new">New</span></div>
+    <a href="buyer/product-details.html?id=dummy" class="czone-product-img">
+        <img src="https://static.webx.pk/files/87161/Images/87161-100624021200424_w_300_h_300.avif" alt="Sample Laptop" loading="lazy">
+    </a>
+    <div class="czone-product-body">
+        <div class="czone-product-top">
+            <span class="czone-product-brand">TechVerse</span>
+            <span class="czone-stock-pill in-stock"><i class="fas fa-circle" style="font-size:7px"></i>10 in stock</span>
+        </div>
+        <a href="buyer/product-details.html?id=dummy" class="czone-product-title">Sample Gaming Laptop 15.6"</a>
+        <div class="czone-rating-row">
+            <div class="czone-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+            <span class="czone-rating-copy">4.0 (12 reviews)</span>
+        </div>
+        <div class="czone-prices"><span class="czone-price">Rs. 150,000</span></div>
+        <div class="czone-card-actions">
+            <button class="czone-icon-btn" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
+            <button class="czone-btn">Add To Cart</button>
+        </div>
+    </div>
+</div><!-- Dummy Product Card (UI Placeholder) -->
+<div class="czone-product-box">
+    <div class="czone-badges"><span class="czone-badge czone-badge-new">New</span></div>
+    <a href="buyer/product-details.html?id=dummy" class="czone-product-img">
+        <img src="https://static.webx.pk/files/87161/Images/87161-100624021200424_w_300_h_300.avif" alt="Sample Laptop" loading="lazy">
+    </a>
+    <div class="czone-product-body">
+        <div class="czone-product-top">
+            <span class="czone-product-brand">TechVerse</span>
+            <span class="czone-stock-pill in-stock"><i class="fas fa-circle" style="font-size:7px"></i>10 in stock</span>
+        </div>
+        <a href="buyer/product-details.html?id=dummy" class="czone-product-title">Sample Gaming Laptop 15.6"</a>
+        <div class="czone-rating-row">
+            <div class="czone-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+            <span class="czone-rating-copy">4.0 (12 reviews)</span>
+        </div>
+        <div class="czone-prices"><span class="czone-price">Rs. 150,000</span></div>
+        <div class="czone-card-actions">
+            <button class="czone-icon-btn" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
+            <button class="czone-btn">Add To Cart</button>
+        </div>
+    </div>
+</div>
+</div>
+            </div>
+        </section>
+
+        <!-- ============ TRUST BADGES ============ -->
+        <section style="max-width: 1280px; margin: 0 auto; padding: 0 16px 24px;">
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;">
+                <div class="trust-badge-box">
+                    <div class="trust-badge-icon"><i class="fas fa-shipping-fast"></i></div>
+                    <div>
+                        <h4 style="font-weight: 700; font-size: 13px; margin: 0 0 2px;">Free Secured Shipping</h4>
+                        <p style="font-size: 12px; color: #666; margin: 0;">Free delivery on orders above Rs. 50,000</p>
+                    </div>
+                </div>
+                <div class="trust-badge-box">
+                    <div class="trust-badge-icon"><i class="fas fa-lock"></i></div>
+                    <div>
+                        <h4 style="font-weight: 700; font-size: 13px; margin: 0 0 2px;">Secure Payments</h4>
+                        <p style="font-size: 12px; color: #666; margin: 0;">Cards, Bank Transfer, EasyPaisa & COD</p>
+                    </div>
+                </div>
+                <div class="trust-badge-box">
+                    <div class="trust-badge-icon"><i class="fas fa-headset"></i></div>
+                    <div>
+                        <h4 style="font-weight: 700; font-size: 13px; margin: 0 0 2px;">24/7 Support</h4>
+                        <p style="font-size: 12px; color: #666; margin: 0;">Phone & WhatsApp support available</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ NEWSLETTER ============ -->
+        <section class="deal-section" style="padding: 40px 0;" data-aos="fade-up">
+            <div style="max-width: 560px; margin: 0 auto; padding: 0 16px; text-align: center; color: white;">
+                <h2 style="font-size: 22px; font-weight: 800; margin: 0 0 8px;">Subscribe to Our Newsletter</h2>
+                <p style="font-size: 13px; opacity: 0.75; margin-bottom: 20px;">Get product updates, restock alerts, and exclusive deals.</p>
+                <form id="newsletter-form" style="display: flex; gap: 8px; flex-wrap: wrap; justify-content: center;">
+                    <input type="email" required placeholder="Enter your email address..." style="flex: 1; min-width: 200px; padding: 11px 16px; border: none; border-radius: 2px; font-size: 13px; color: #111; outline: none;">
+                <button type="submit" style="background: linear-gradient(135deg,#f97316,#ea6c0a); color: white; padding: 11px 22px; font-weight: 700; font-size: 13px; border: none; border-radius: 2px; cursor: pointer; text-transform: uppercase; letter-spacing: 0.04em;">Subscribe</button>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <div id="footer-container"></div>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script src="js/utils.js"></script>
+    <script type="module" src="js/common.js"></script>
+    <script type="module" src="js/homepage.js"></script>
+    <script type="module" src="./firebase/firebase.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>
+
+
+

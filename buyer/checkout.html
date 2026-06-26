@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - TechVerse Market</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body class="bg-slate-50 min-h-screen flex flex-col">
+
+    <!-- Sticky Navbar Container -->
+    <div id="navbar-container"></div>
+
+    <!-- Page Header / Breadcrumb -->
+    <div class="page-hero py-8">
+        <div class="max-w-7xl mx-auto px-4">
+            <h1 class="text-2xl font-extrabold tracking-tight">Billing & Checkout</h1>
+            <p class="text-sm text-white/70 mt-2 max-w-xl">Complete delivery details and choose your payment channel with a cleaner, more professional checkout layout.</p>
+            <nav class="flex text-xs text-slate-400 mt-1.5 font-medium">
+                <a href="../index.html" class="page-hero-link">Home</a>
+                <span class="mx-2 text-slate-700"><i class="fas fa-chevron-right text-[8px]"></i></span>
+                <a href="cart.html" class="page-hero-link">Shopping Cart</a>
+                <span class="mx-2 text-slate-700"><i class="fas fa-chevron-right text-[8px]"></i></span>
+                <span class="page-hero-current">Checkout</span>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 py-8">
+        <form id="checkout-form" class="flex flex-col lg:flex-row gap-8">
+            <!-- Left Side: Shipping form and Payment options -->
+            <div class="flex-grow flex flex-col gap-6">
+                <!-- Shipping Info -->
+                <div class="table-shell p-6">
+                    <h3 class="font-bold text-slate-800 text-sm uppercase tracking-wider pb-4 border-b border-slate-100 mb-5"><i class="fas fa-shipping-fast text-teal-600 mr-2"></i>Shipping Information</h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                        <div>
+                            <label for="checkout-name" class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Recipient Name</label>
+                            <input id="checkout-name" type="text" required placeholder="e.g. John Doe" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 text-sm focus:outline-none focus:border-teal-500 focus:bg-white transition-all">
+                        </div>
+                        <div>
+                            <label for="checkout-phone" class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Phone Number</label>
+                            <input id="checkout-phone" type="text" required placeholder="e.g. +92 300 1234567" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 text-sm focus:outline-none focus:border-teal-500 focus:bg-white transition-all">
+                        </div>
+                        <div class="md:col-span-2">
+                            <label for="checkout-address" class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Delivery Address</label>
+                            <input id="checkout-address" type="text" required placeholder="House/Apartment number, Street details, Area" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 text-sm focus:outline-none focus:border-teal-500 focus:bg-white transition-all">
+                        </div>
+                        <div>
+                            <label for="checkout-city" class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">City</label>
+                            <input id="checkout-city" type="text" required placeholder="e.g. Karachi" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 text-sm focus:outline-none focus:border-teal-500 focus:bg-white transition-all">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Payment Methods -->
+                <div class="table-shell p-6">
+                    <h3 class="font-bold text-slate-800 text-sm uppercase tracking-wider pb-4 border-b border-slate-100 mb-5"><i class="fas fa-credit-card text-teal-600 mr-2"></i>Payment Channels</h3>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <!-- Cash on Delivery -->
+                        <label class="border border-slate-200 hover:border-teal-500 rounded-xl p-4 flex items-center justify-between cursor-pointer select-none transition-colors">
+                            <div class="flex items-center gap-3">
+                                <input type="radio" name="payment-method" value="Cash On Delivery" checked class="w-4 h-4 text-teal-600 focus:ring-teal-500">
+                                <div>
+                                    <span class="font-bold text-slate-800 text-sm block">Cash On Delivery</span>
+                                    <span class="text-[10px] text-slate-400 font-semibold">Pay cash when items are delivered</span>
+                                </div>
+                            </div>
+                            <i class="fas fa-money-bill-wave text-slate-400 text-lg"></i>
+                        </label>
+                        <!-- Bank Transfer -->
+                        <label class="border border-slate-200 hover:border-teal-500 rounded-xl p-4 flex items-center justify-between cursor-pointer select-none transition-colors">
+                            <div class="flex items-center gap-3">
+                                <input type="radio" name="payment-method" value="Bank Transfer" class="w-4 h-4 text-teal-600 focus:ring-teal-500">
+                                <div>
+                                    <span class="font-bold text-slate-800 text-sm block">Bank Transfer</span>
+                                    <span class="text-[10px] text-slate-400 font-semibold">Transfer directly to corporate bank</span>
+                                </div>
+                            </div>
+                            <i class="fas fa-university text-slate-400 text-lg"></i>
+                        </label>
+                        <!-- JazzCash -->
+                        <label class="border border-slate-200 hover:border-teal-500 rounded-xl p-4 flex items-center justify-between cursor-pointer select-none transition-colors">
+                            <div class="flex items-center gap-3">
+                                <input type="radio" name="payment-method" value="JazzCash" class="w-4 h-4 text-teal-600 focus:ring-teal-500">
+                                <div>
+                                    <span class="font-bold text-slate-800 text-sm block">JazzCash Wallet</span>
+                                    <span class="text-[10px] text-slate-400 font-semibold">Mobile Account / OTC voucher code</span>
+                                </div>
+                            </div>
+                            <span class="text-xs font-black text-red-500 tracking-wider">JazzCash</span>
+                        </label>
+                        <!-- EasyPaisa -->
+                        <label class="border border-slate-200 hover:border-teal-500 rounded-xl p-4 flex items-center justify-between cursor-pointer select-none transition-colors">
+                            <div class="flex items-center gap-3">
+                                <input type="radio" name="payment-method" value="EasyPaisa" class="w-4 h-4 text-teal-600 focus:ring-teal-500">
+                                <div>
+                                    <span class="font-bold text-slate-800 text-sm block">EasyPaisa Wallet</span>
+                                    <span class="text-[10px] text-slate-400 font-semibold">Pay instantly via Telenor Wallet app</span>
+                                </div>
+                            </div>
+                            <span class="text-xs font-black text-emerald-600 tracking-wider">EasyPaisa</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side: Items summary & Place Order -->
+            <div class="w-full lg:w-96 shrink-0 flex flex-col gap-6">
+                <!-- Summary Card -->
+                <div class="table-shell p-6">
+                    <h3 class="font-bold text-slate-800 text-sm uppercase tracking-wider pb-4 border-b border-slate-100 mb-4">Order Items</h3>
+                    
+                    <!-- Items list -->
+                    <div id="checkout-items-list" class="divide-y divide-slate-100 max-h-48 overflow-y-auto pr-2 mb-6">
+                        <!-- Items injected dynamically -->
+                    </div>
+
+                    <!-- Financial specs -->
+                    <div class="space-y-3.5 text-xs">
+                        <div class="flex justify-between items-center text-slate-500">
+                            <span>Subtotal</span>
+                            <span class="font-bold text-slate-800" id="checkout-subtotal">PKR 0</span>
+                        </div>
+                        <div class="flex justify-between items-center text-slate-500">
+                            <span>Shipping</span>
+                            <span class="font-bold text-slate-800" id="checkout-shipping">PKR 0</span>
+                        </div>
+                        <div class="flex justify-between items-center text-slate-500 pb-4 border-b border-slate-100">
+                            <span>Sales Tax (GST 5%)</span>
+                            <span class="font-bold text-slate-800" id="checkout-tax">PKR 0</span>
+                        </div>
+                        <div class="flex justify-between items-center text-slate-900 font-extrabold text-sm pt-2">
+                            <span>Total Payable</span>
+                            <span class="text-teal-600 text-base" id="checkout-total">PKR 0</span>
+                        </div>
+                    </div>
+
+                    <!-- CTA -->
+                    <button type="submit" class="w-full py-3.5 brand-btn-primary text-white font-extrabold rounded-xl transition-all text-sm mt-8">
+                        Place Order <i class="fas fa-check-circle ml-1"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </main>
+
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
+
+    <!-- Scripts -->
+    <script src="../js/utils.js"></script>
+    <script type="module" src="../js/common.js"></script>
+    <!-- Checkout Logic -->
+    <script type="module" src="../js/checkout.js"></script>
+</body>
+</html>
+
+

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Tracking - Vendor Portal</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body class="bg-slate-50 min-h-screen flex flex-col">
+
+    <!-- Header Container -->
+    <div id="vendor-header"></div>
+
+    <div class="flex flex-grow overflow-hidden">
+        <!-- Sidebar Container -->
+        <div id="vendor-sidebar"></div>
+
+        <!-- Main Workspace -->
+        <main class="flex-grow p-6 md:p-8 overflow-y-auto">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+                <div>
+                    <h1 class="text-2xl font-extrabold text-slate-900 tracking-tight">Stock Inventory Tracker</h1>
+                    <p class="text-slate-450 text-xs mt-1">Monitor stock quantities, check availability status, and make adjustments.</p>
+                </div>
+            </div>
+
+            <!-- Inventory Table Card -->
+            <div class="bg-white border border-slate-200/80 rounded-2xl p-6 shadow-sm">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse text-xs">
+                        <thead>
+                            <tr class="border-b border-slate-100 text-slate-400 font-bold uppercase tracking-wider pb-3">
+                                <th class="py-2.5">Product Name</th>
+                                <th class="py-2.5">Unit Price</th>
+                                <th class="py-2.5 text-center">Stock Count</th>
+                                <th class="py-2.5 text-center">Availability</th>
+                                <th class="py-2.5 text-center">Quick Adjust</th>
+                            </tr>
+                        </thead>
+                        <tbody id="inventory-tbody" class="divide-y divide-slate-100">
+                            <!-- Items injected dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Empty State -->
+                <div id="inventory-empty-state" class="hidden text-center py-16">
+                    <div class="w-16 h-16 rounded-full bg-slate-50 text-slate-400 flex items-center justify-center text-xl mx-auto mb-4 border border-slate-100"><i class="fas fa-cubes"></i></div>
+                    <h3 class="font-bold text-slate-850 text-base">No Products Found</h3>
+                    <p class="text-slate-400 text-xs mt-1">Add items to your catalog first to manage stock inventory.</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../js/utils.js"></script>
+    <script type="module" src="../js/vendor.js"></script>
+</body>
+</html>
+
+

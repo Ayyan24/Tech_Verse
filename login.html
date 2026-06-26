@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - TechVerse Market</title>
+    <meta name="description" content="Sign in to TechVerse Market — Pakistan's #1 IT store.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        .login-card { max-width: 960px; width: 100%; display: grid; grid-template-columns: 1fr 1fr; overflow: hidden; border-radius: 12px; box-shadow: 0 20px 60px rgba(30,27,75,0.18); }
+        @media (max-width: 768px) { .login-card { grid-template-columns: 1fr; } }
+        .input-field {
+            width: 100%; padding: 12px 16px 12px 42px;
+            background: #f8f9fb; border: 1.5px solid #e2e4ed;
+            border-radius: 6px; font-size: 14px; color: #111; outline: none;
+            transition: border-color 0.2s, background 0.2s;
+        }
+        .input-field:focus { border-color: #f97316; background: #fff; }
+        .input-icon { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: #9ca3af; }
+    </style>
+</head>
+<body style="background: #f5f6fa; display: flex; flex-direction: column; min-height: 100vh;">
+
+    <div id="navbar-container"></div>
+
+    <main style="flex: 1; display: flex; align-items: center; justify-content: center; padding: 40px 16px;">
+        <div class="login-card">
+
+            <!-- Left panel: branding -->
+            <div style="background: linear-gradient(145deg, #0f0d2e 0%, #1e1b4b 55%, #312e81 100%); padding: 48px 40px; color: white; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden;">
+                <!-- decorative blobs -->
+                <div style="position:absolute;top:-60px;left:-60px;width:180px;height:180px;background:#f97316;border-radius:50%;filter:blur(80px);opacity:0.15;"></div>
+                <div style="position:absolute;bottom:-80px;right:-40px;width:220px;height:220px;background:#312e81;border-radius:50%;filter:blur(80px);opacity:0.4;"></div>
+
+                <div style="position:relative;z-index:2;">
+                    <a href="index.html" style="display:flex;align-items:center;gap:10px;text-decoration:none;margin-bottom:40px;">
+                        <div class="brand-btn-accent" style="padding:8px 10px;border-radius:6px;">
+                            <i class="fas fa-microchip"></i>
+                        </div>
+                        <span style="font-size:20px;font-weight:800;color:#fff;">TechVerse<span style="color:#f97316;font-size:14px;">.pk</span></span>
+                    </a>
+                    <h2 style="font-size:28px;font-weight:800;line-height:1.2;margin:0 0 12px;">Welcome Back<br>to the Tech Hub</h2>
+                    <p style="font-size:13px;color:rgba(255,255,255,0.65);line-height:1.7;">
+                        Log in to access your dashboard, track orders, manage your shop, or buy premium tech hardware at the best prices in Pakistan.
+                    </p>
+                </div>
+
+                <div style="position:relative;z-index:2;margin-top:32px;">
+                    <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:8px;padding:16px;display:flex;align-items:center;gap:14px;">
+                        <i class="fas fa-shield-alt" style="font-size:22px;color:#f97316;flex-shrink:0;"></i>
+                        <div>
+                            <p style="font-size:13px;font-weight:700;margin:0 0 2px;">100% Secured Login</p>
+                            <p style="font-size:12px;color:rgba(255,255,255,0.6);margin:0;">Your data is protected with SSL encryption.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right panel: form -->
+            <div style="background:#fff;padding:48px 40px;display:flex;flex-direction:column;justify-content:center;">
+                <h2 style="font-size:22px;font-weight:800;color:#1e1b4b;margin:0 0 4px;">Sign In</h2>
+                <p style="font-size:13px;color:#6b7280;margin:0 0 28px;">Enter your credentials to access your account.</p>
+
+                <form id="login-form" style="display:flex;flex-direction:column;gap:18px;">
+
+                    <div>
+                        <label style="display:block;font-size:11px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px;">Email or Admin ID</label>
+                        <div style="position:relative;">
+                            <i class="far fa-envelope input-icon"></i>
+                            <input id="email" type="email" required placeholder="your@email.com" class="input-field">
+                        </div>
+                    </div>
+
+                    <div>
+                        <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
+                            <label style="font-size:11px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:0.06em;">Password</label>
+                            <a href="#" style="font-size:12px;font-weight:600;color:#f97316;text-decoration:none;">Forgot Password?</a>
+                        </div>
+                        <div style="position:relative;">
+                            <i class="fas fa-lock input-icon"></i>
+                            <input id="password" type="password" required placeholder="••••••••" class="input-field">
+                        </div>
+                    </div>
+
+                    <button type="submit" style="width:100%;padding:13px;background:linear-gradient(135deg,#1e1b4b,#312e81);color:#fff;font-weight:700;font-size:14px;border:none;border-radius:6px;cursor:pointer;transition:all 0.2s;letter-spacing:0.03em;">
+                        Sign In <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+
+                </form>
+
+                <p style="text-align:center;font-size:13px;color:#6b7280;margin-top:24px;">
+                    Don't have an account?
+                    <a href="signup.html" style="font-weight:700;color:#f97316;text-decoration:none;">Create Account</a>
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <div id="footer-container"></div>
+    <script src="js/utils.js"></script>
+    <script type="module" src="js/common.js"></script>
+    <script type="module" src="js/auth.js"></script>
+</body>
+</html>
+

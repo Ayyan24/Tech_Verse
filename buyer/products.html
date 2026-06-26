@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products Catalog - TechVerse Market</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body class="bg-slate-50 min-h-screen flex flex-col">
+
+    <!-- Sticky Navbar Container (Loaded dynamically via prefix) -->
+    <div id="navbar-container"></div>
+
+    <!-- Page Header / Breadcrumb -->
+    <div class="text-white py-8 border-b border-slate-800 shadow-xl" style="background: linear-gradient(135deg, #0b1627, #132238, #1f4b7a);">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row md:items-center justify-between gap-2">
+            <div>
+                <h1 class="text-2xl font-extrabold tracking-tight">Products Catalog</h1>
+                <p class="text-sm text-white/70 mt-2 max-w-xl">Browse curated technology collections with smarter filters, cleaner cards, and a more premium storefront experience.</p>
+                <!-- Breadcrumb -->
+                <nav class="flex text-xs text-slate-400 mt-1.5 font-medium">
+                    <a href="../index.html" class="hover:text-teal-400 transition-colors">Home</a>
+                    <span class="mx-2 text-slate-600"><i class="fas fa-chevron-right text-[8px]"></i></span>
+                    <span class="text-teal-400">Products Catalog</span>
+                </nav>
+            </div>
+            <div class="text-xs text-slate-400 font-semibold" id="catalog-count-summary">
+                Showing all approved products
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Section -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 py-8 flex flex-col lg:flex-row gap-8">
+        <!-- Sidebar Filter Container -->
+        <aside class="w-full lg:w-72 shrink-0 surface-panel p-6 h-fit sticky top-24">
+            <div class="flex items-center justify-between pb-4 border-b border-slate-100 mb-5">
+                <h3 class="font-bold text-slate-800 text-sm uppercase tracking-wider"><i class="fas fa-filter text-teal-600 mr-2"></i>Filters</h3>
+                <button id="clear-filters-btn" class="text-xs font-semibold text-sky-800 hover:text-teal-600 hover:underline">Reset</button>
+            </div>
+
+            <!-- Categories Filter -->
+            <div class="mb-6">
+                <h4 class="font-bold text-slate-800 text-xs uppercase tracking-wider mb-3">Categories</h4>
+                <div class="space-y-2.5 max-h-48 overflow-y-auto pr-2" id="sidebar-categories">
+                    <!-- Injected dynamically by products.js -->
+                </div>
+            </div>
+
+            <!-- Brands Filter -->
+            <div class="mb-6">
+                <h4 class="font-bold text-slate-800 text-xs uppercase tracking-wider mb-3">Brands</h4>
+                <div class="space-y-2.5 max-h-48 overflow-y-auto pr-2" id="sidebar-brands">
+                    <!-- Injected dynamically by products.js -->
+                </div>
+            </div>
+
+            <!-- Price Range Filter -->
+            <div class="mb-6">
+                <h4 class="font-bold text-slate-800 text-xs uppercase tracking-wider mb-3">Price Range (PKR)</h4>
+                <div class="space-y-3">
+                    <input type="range" id="price-slider" min="10000" max="500000" step="5000" class="w-full h-1 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-teal-500" value="500000">
+                    <div class="flex justify-between items-center text-xs font-semibold text-slate-600">
+                        <span>Min: 10k</span>
+                        <span class="text-teal-600" id="price-slider-value">Max: 500,000</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Availability Toggle -->
+            <div>
+                <label class="flex items-center gap-2 cursor-pointer select-none">
+                    <input type="checkbox" id="stock-toggle" class="w-4 h-4 rounded text-teal-600 focus:ring-teal-500 border-slate-300">
+                    <span class="text-xs font-semibold text-slate-700">In Stock Only</span>
+                </label>
+            </div>
+        </aside>
+
+        <!-- Product Grid & Search Section -->
+        <section class="flex-grow">
+            <!-- Search & Sort Row -->
+            <div class="surface-panel p-5 flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+                <!-- Inner Catalog Search -->
+                <div class="relative max-w-sm w-full">
+                    <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400">
+                        <i class="fas fa-search text-xs"></i>
+                    </span>
+                    <input type="text" id="catalog-search-input" placeholder="Search catalog..." class="w-full pl-9 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl text-slate-800 text-xs focus:outline-none focus:border-teal-500 focus:bg-white transition-all">
+                </div>
+
+                <!-- Sort and Layout controls -->
+                <div class="flex items-center gap-3 shrink-0 self-end md:self-auto">
+                    <label for="catalog-sort" class="text-xs font-semibold text-slate-400">Sort By:</label>
+                    <select id="catalog-sort" class="bg-slate-50 border border-slate-200 text-slate-800 rounded-2xl px-3 py-3 text-xs font-semibold focus:outline-none focus:border-teal-500 cursor-pointer">
+                        <option value="default">Best Match</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="rating">Top Rated</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Dynamic Product Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" id="products-catalog-grid">
+                <!-- Injected dynamically by products.js -->
+            </div>
+
+            <!-- Empty State -->
+            <div id="catalog-empty-state" class="hidden text-center py-20 surface-panel">
+                <div class="w-16 h-16 rounded-full bg-slate-50 text-slate-400 flex items-center justify-center text-2xl mx-auto mb-4 border border-slate-100"><i class="fas fa-box-open"></i></div>
+                <h3 class="font-bold text-slate-800 text-base">No Matching Products</h3>
+                <p class="text-slate-400 text-xs mt-1 max-w-xs mx-auto">We couldn't find any approved products matching your active filters. Try resetting your search parameters.</p>
+                <button id="reset-catalog-btn" class="brand-btn-primary text-white font-bold text-xs px-5 py-3 rounded-xl mt-4 transition-all">Reset Filters</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
+
+    <!-- Scripts -->
+    <script src="../js/utils.js"></script>
+    <script src="../js/utils.js"></script>
+    <script type="module" src="../js/common.js"></script>
+    <script type="module" src="../js/products.js"></script>
+</body>
+</html>
+
+
+
