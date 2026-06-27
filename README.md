@@ -54,7 +54,7 @@ View reports & orders
 
 Manage categories
 
-#Tech Stack
+# Tech Stack
 
 **Frontend:** HTML, CSS, JavaScript (Vanilla JS)
 
