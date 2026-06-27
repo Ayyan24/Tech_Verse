@@ -17,39 +17,58 @@ Role-based access (Admin / Vendor / Buyer)
 ## Buyer Features 
 
 Browse products
+
 View product details
+
 Add to cart
+
 Checkout system
+
 Wishlist
+
 Order history
+
 Profile management
 
 ## Vendor Features
 
 Add new products
+
 Manage inventory
+
 View orders
+
 Sales reports
 
 ## Admin Features
 
 Dashboard overview
+
 Manage users
+
 Approve vendors
+
 Approve products
+
 View reports & orders
+
 Manage categories
 
 #Tech Stack
-Frontend: HTML, CSS, JavaScript
-Backend: Firebase
-Database: Firestore / Realtime DB
-Authentication: Firebase Auth
+
+**Frontend:** HTML, CSS, JavaScript (Vanilla JS)
+
+**Backend:** Firebase
+
+**Database:** Firestore / Realtime Database
+
+**Authentication:** Firebase Auth
 
 # Setup Guide
 
 ## 1. Clone Repository
 git clone https://github.com/Ayyan24/Tech_Verse.git
+
 ## 2. Open Project
 
 Open in VS Code
@@ -59,6 +78,7 @@ Open in VS Code
 Enable Authentication and Firestore
 
 ## 4. Add Firebase Config
+
 const firebaseConfig = {
   apiKey: "YOUR_API_KEY",
   authDomain: "YOUR_DOMAIN",
@@ -89,11 +109,15 @@ Firestore data overwrite issue (single user problem)
 # Future Improvements
 
 Payment Integration (Stripe / JazzCash / EasyPaisa)
+
 Search & Filters
+
 Progressive Web App (PWA)
+
 Notifications system
+
 AI recommendations
 
 # Support
 
-Star the repo if you like it!
+If you like this project, please star the repository and share it!
