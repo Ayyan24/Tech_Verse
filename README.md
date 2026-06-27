@@ -1,168 +1,91 @@
-#Tech Verse – Full E-Commerce Web Application
+🚀 Tech Verse – Full E-Commerce Web Application
 
-Tech Verse is a complete multi-role e-commerce web app built using HTML, CSS, JavaScript, and Firebase.
-It supports Buyers, Vendors, and Admins, making it a full-featured marketplace system.
+Tech Verse is a multi-role e-commerce web application built using HTML, CSS, JavaScript, and Firebase.
+It supports Admin, Vendor, and Buyer roles.
 
-#Repository
+🔗 Repository
 
 https://github.com/Ayyan24/Tech_Verse
 
-#Key Features
-
-Authentication System
+🌟 Features
+👤 Authentication System
 Firebase Email/Password Authentication
 Role-based access (Admin / Vendor / Buyer)
-
-#Buyer Features
-
+🛍️ Buyer Features
 Browse products
 View product details
-Add to cart 
+Add to cart
 Checkout system
-Wishlist 
+Wishlist
 Order history
 Profile management
-
-#Vendor Features
-
+🏪 Vendor Features
 Add new products
 Manage inventory
 View orders
 Sales reports
-
-#Admin Features
-
+🛠️ Admin Features
 Dashboard overview
 Manage users
 Approve vendors
 Approve products
 View reports & orders
 Manage categories
-
-#Tech Stack
-
-Frontend: HTML, CSS, JavaScript (Vanilla JS)
+🛠️ Tech Stack
+Frontend: HTML, CSS, JavaScript
 Backend: Firebase
-Database: Firestore / Realtime Database
+Database: Firestore / Realtime DB
 Authentication: Firebase Auth
-
-#Project Structure
-
+📂 Project Structure
 Tech_Verse-main/
 │── index.html
 │── login.html
 │── signup.html
-│── README.md
 │
 ├── admin/
-│   ├── dashboard.html
-│   ├── users.html
-│   ├── categories.html
-│   ├── orders.html
-│   ├── reports.html
-│   ├── product-approval.html
-│   └── vendor-approval.html
-│
 ├── buyer/
-│   ├── products.html
-│   ├── product-details.html
-│   ├── cart.html
-│   ├── checkout.html
-│   ├── orders.html
-│   ├── profile.html
-│   └── wishlist.html
-│
 ├── vendor/
-│   ├── dashboard.html
-│   ├── add-product.html
-│   ├── manage-products.html
-│   ├── inventory.html
-│   ├── orders.html
-│   └── reports.html
-│
 ├── css/
-│   └── style.css
-│
 ├── js/
-│   ├── admin.js
-│   ├── auth.js
-│   ├── cart.js
-│   ├── checkout.js
-│   ├── common.js
-│   ├── data.js
-│   ├── firebase-loader.js
-│   ├── homepage.js
-│   ├── orders.js
-│   ├── product-details.js
-│   ├── products.js
-│   ├── profile.js
-│   ├── utils.js
-│   ├── vendor.js
-│   └── wishlist.js
-│
 └── firebase/
-    └── firebase.js
-    
-#Setup Instructions
-
-1️⃣ Clone Repository
+⚙️ Setup Guide
+1. Clone Repository
 git clone https://github.com/Ayyan24/Tech_Verse.git
-2️⃣ Open Project
-Open in VS Code or any IDE
-3️⃣ Firebase Setup
+2. Open Project
 
-Go to Firebase Console and:
+Open in VS Code
 
-Create a project
-Enable:
-Authentication → Email/Password
-Firestore Database
-4️⃣ Configure Firebase
+3. Firebase Setup
 
-Edit file:
+Enable Authentication and Firestore
 
-firebase/firebase.js
-
-Add your config:
-
+4. Add Firebase Config
 const firebaseConfig = {
   apiKey: "YOUR_API_KEY",
   authDomain: "YOUR_DOMAIN",
   projectId: "YOUR_PROJECT_ID",
 };
+▶️ Run Project
 
-**Run the Project**
-Open index.html in browser
-OR
-Use Live Server (VS Code)
+Open index.html
+OR use Live Server
 
-#Roles Overview
+🔐 Roles
+Admin → Full control
+Vendor → Manage products
+Buyer → Shopping
+🐞 Known Issues
+Login issue
+Product sync issue
+🚀 Future Improvements
+Payment integration
+Search & filters
+Notifications
+👨‍💻 Author
 
-Role	Access
-**Admin**	Full system control
-**Vendor**	Product & order management
-**Buyer**	Shopping & profile
+Abdullah Khan
+https://github.com/Ayyan24
 
-#Known Issues
+⭐ Support
 
-Login issues with existing users (invalid email bug)
-Product addition sometimes not syncing with Firebase
-Firestore data overwrite issue (single user problem)
-
- #Future Improvements
-
-Payment Integration (Stripe / JazzCash / EasyPaisa)
-Search & Filters
-Progressive Web App (PWA)
-Notifications system
-AI recommendations
-
-#Contributing
-Fork the repository
-Create a new branch
-Commit your changes
-Push & create Pull Request
-
-#Support
-
-If you like this project, please star the repository and share it!
+Star the repo if you like it!
