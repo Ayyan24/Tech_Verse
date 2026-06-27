@@ -1,17 +1,21 @@
-🚀 Tech Verse – Full E-Commerce Web Application
+# Tech Verse – Full E-Commerce Web Application
 
 Tech Verse is a multi-role e-commerce web application built using HTML, CSS, JavaScript, and Firebase.
 It supports Admin, Vendor, and Buyer roles.
 
-🔗 Repository
+# Repository
 
 https://github.com/Ayyan24/Tech_Verse
 
-🌟 Features
-👤 Authentication System
+# Features
+
+## Authentication System 
+
 Firebase Email/Password Authentication
 Role-based access (Admin / Vendor / Buyer)
-🛍️ Buyer Features
+
+## Buyer Features 
+
 Browse products
 View product details
 Add to cart
@@ -19,73 +23,71 @@ Checkout system
 Wishlist
 Order history
 Profile management
-🏪 Vendor Features
+
+## Vendor Features
+
 Add new products
 Manage inventory
 View orders
 Sales reports
-🛠️ Admin Features
+
+## Admin Features
+
 Dashboard overview
 Manage users
 Approve vendors
 Approve products
 View reports & orders
 Manage categories
-🛠️ Tech Stack
+
+#Tech Stack
 Frontend: HTML, CSS, JavaScript
 Backend: Firebase
 Database: Firestore / Realtime DB
 Authentication: Firebase Auth
-📂 Project Structure
-Tech_Verse-main/
-│── index.html
-│── login.html
-│── signup.html
-│
-├── admin/
-├── buyer/
-├── vendor/
-├── css/
-├── js/
-└── firebase/
-⚙️ Setup Guide
-1. Clone Repository
+
+# Setup Guide
+
+## 1. Clone Repository
 git clone https://github.com/Ayyan24/Tech_Verse.git
-2. Open Project
+## 2. Open Project
 
 Open in VS Code
 
-3. Firebase Setup
+## 3. Firebase Setup
 
 Enable Authentication and Firestore
 
-4. Add Firebase Config
+## 4. Add Firebase Config
 const firebaseConfig = {
   apiKey: "YOUR_API_KEY",
   authDomain: "YOUR_DOMAIN",
   projectId: "YOUR_PROJECT_ID",
 };
-▶️ Run Project
+
+# Run Project
 
 Open index.html
 OR use Live Server
 
-🔐 Roles
+# Roles
+
 Admin → Full control
 Vendor → Manage products
 Buyer → Shopping
-🐞 Known Issues
+
+# Known Issues
+
 Login issue
 Product sync issue
-🚀 Future Improvements
+
+# Future Improvements
+
 Payment integration
 Search & filters
 Notifications
-👨‍💻 Author
 
-Abdullah Khan
-https://github.com/Ayyan24
 
-⭐ Support
+# Support
 
 Star the repo if you like it!
