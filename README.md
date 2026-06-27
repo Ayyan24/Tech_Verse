@@ -106,6 +106,8 @@ Product addition sometimes not syncing with Firebase
 
 Firestore data overwrite issue (single user problem)
 
+Web lagging at some actions
+
 # Future Improvements
 
 Payment Integration (Stripe / JazzCash / EasyPaisa)
