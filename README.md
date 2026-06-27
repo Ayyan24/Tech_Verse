@@ -73,20 +73,26 @@ OR use Live Server
 # Roles
 
 Admin → Full control
+
 Vendor → Manage products
+
 Buyer → Shopping
 
 # Known Issues
 
-Login issue
-Product sync issue
+Login issues with existing users (invalid email bug)
+
+Product addition sometimes not syncing with Firebase
+
+Firestore data overwrite issue (single user problem)
 
 # Future Improvements
 
-Payment integration
-Search & filters
-Notifications
-
+Payment Integration (Stripe / JazzCash / EasyPaisa)
+Search & Filters
+Progressive Web App (PWA)
+Notifications system
+AI recommendations
 
 # Support
 
