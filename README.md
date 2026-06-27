@@ -1,19 +1,19 @@
-Tech Verse – Full E-Commerce Web Application
+#Tech Verse – Full E-Commerce Web Application
 
 Tech Verse is a complete multi-role e-commerce web app built using HTML, CSS, JavaScript, and Firebase.
 It supports Buyers, Vendors, and Admins, making it a full-featured marketplace system.
 
-Repository
+#Repository
 
 https://github.com/Ayyan24/Tech_Verse
 
-Key Features
+#Key Features
 
 Authentication System
 Firebase Email/Password Authentication
 Role-based access (Admin / Vendor / Buyer)
 
-Buyer Features
+#Buyer Features
 
 Browse products
 View product details
@@ -23,14 +23,14 @@ Wishlist
 Order history
 Profile management
 
-Vendor Features
+#Vendor Features
 
 Add new products
 Manage inventory
 View orders
 Sales reports
 
-Admin Features
+#Admin Features
 
 Dashboard overview
 Manage users
@@ -39,14 +39,15 @@ Approve products
 View reports & orders
 Manage categories
 
-Tech Stack
+#Tech Stack
 
 Frontend: HTML, CSS, JavaScript (Vanilla JS)
 Backend: Firebase
 Database: Firestore / Realtime Database
 Authentication: Firebase Auth
 
-📂 Project Structure
+#Project Structure
+
 Tech_Verse-main/
 │── index.html
 │── login.html
@@ -102,7 +103,8 @@ Tech_Verse-main/
 └── firebase/
     └── firebase.js
     
-Setup Instructions
+#Setup Instructions
+
 1️⃣ Clone Repository
 git clone https://github.com/Ayyan24/Tech_Verse.git
 2️⃣ Open Project
@@ -129,40 +131,38 @@ const firebaseConfig = {
   projectId: "YOUR_PROJECT_ID",
 };
 
-Run the Project
+**Run the Project**
 Open index.html in browser
 OR
 Use Live Server (VS Code)
 
-Roles Overview
+#Roles Overview
 
 Role	Access
-Admin	Full system control
-Vendor	Product & order management
-Buyer	Shopping & profile
+**Admin**	Full system control
+**Vendor**	Product & order management
+**Buyer**	Shopping & profile
 
-Known Issues
+#Known Issues
 
 Login issues with existing users (invalid email bug)
 Product addition sometimes not syncing with Firebase
 Firestore data overwrite issue (single user problem)
 
- Future Improvements
+ #Future Improvements
 
-💳 Payment Integration (Stripe / JazzCash / EasyPaisa)
-🔎 Search & Filters
-📱 Progressive Web App (PWA)
-🔔 Notifications system
-🧠 AI recommendations
+Payment Integration (Stripe / JazzCash / EasyPaisa)
+Search & Filters
+Progressive Web App (PWA)
+Notifications system
+AI recommendations
 
-Contributing
+#Contributing
 Fork the repository
 Create a new branch
 Commit your changes
 Push & create Pull Request
 
-
-
-Support
+#Support
 
 If you like this project, please star the repository and share it!
